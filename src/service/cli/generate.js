@@ -1,5 +1,6 @@
 'use strict';
-const fs = require(`fs`);
+const {writeFile} = require(`fs`).promises;
+const chalk = require(`chalk`);
 const {getRandomInteger, shuffle} = require(`../utils/utils`);
 const {ExitCode} = require(`../const`);
 const {
@@ -25,25 +26,28 @@ const generateOffers = (count) => {
   }));
 };
 
+const createMockFile = async (path, content) => {
+  try {
+    await writeFile(path, content);
+    console.info(chalk.green(`Operation success. File created: ${path}`));
+  } catch (error) {
+    console.error(chalk.red(`Can't write data to file...`));
+    process.exit(ExitCode.ERROR);
+  }
+};
+
 module.exports = {
   name: `--generate`,
   run: (count) => {
     const offersCount = Number.parseInt(count, 10) || DEFAULT_COUNT;
 
     if (count > MAX_INPUT_COUNT) {
-      console.error(`Не больше 1000 публикаций`);
+      console.error(chalk.red(`Не больше 1000 публикаций`));
       process.exit(ExitCode.ERROR);
     }
 
-    const content = JSON.stringify(generateOffers(offersCount));
     const mockFilePath = `./mocks.json`;
-
-    fs.writeFile(mockFilePath, content, (err) => {
-      if (err) {
-        console.error(`Can't write data to file...`);
-        process.exit(ExitCode.ERROR);
-      }
-      console.info(`Operation success. File created: ${mockFilePath}`);
-    });
+    const content = JSON.stringify(generateOffers(offersCount));
+    createMockFile(mockFilePath, content);
   }
 };
