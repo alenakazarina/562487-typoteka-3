@@ -1,6 +1,5 @@
 'use strict';
-const moment = require(`moment`);
-const {getRandomInteger} = require(`../utils/utils`);
+const {getRandomInteger, formatDate} = require(`../utils/utils`);
 
 const ANNOUNCES_MAX_COUNT = 5;
 
@@ -55,12 +54,13 @@ const CATEGORIES = [
 ];
 
 const DATES = Array.from({length: 10}, () => {
-  return moment().subtract(getRandomInteger(1, 3), `months`)
-          .add(getRandomInteger(1, 10), `days`)
-          .add(getRandomInteger(1, 10), `hours`)
-          .add(getRandomInteger(1, 10), `minutes`)
-          .subtract(getRandomInteger(1, 10), `seconds`)
-          .format(`YYYY-MM-DD HH:mm:ss`);
+  const date = new Date();
+  date.setMonth(date.getMonth() - getRandomInteger(1, 3));
+  date.setDate(date.getDate() + getRandomInteger(1, 10));
+  date.setHours(date.getHours() + getRandomInteger(1, 10));
+  date.setMinutes(date.getMinutes() + getRandomInteger(1, 10));
+  date.setSeconds(date.getSeconds() - getRandomInteger(1, 10));
+  return formatDate(date);
 });
 
 module.exports = {

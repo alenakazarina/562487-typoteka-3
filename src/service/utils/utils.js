@@ -14,7 +14,12 @@ const getRandomInteger = (min, max) => {
   return Math.floor(Math.random() * (maxInt - minInt + 1)) + minInt;
 };
 
+const formatDate = (date) => {
+  return date.toISOString().split(`T`).join(` `).slice(0, 19);
+};
+
 module.exports = {
   shuffle,
-  getRandomInteger
+  getRandomInteger,
+  formatDate
 };

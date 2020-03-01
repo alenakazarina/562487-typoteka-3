@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "chalk": "3.0.0",
-    "inquirer": "7.0.5",
-    "moment": "2.24.0"
+    "inquirer": "7.0.5"
   }
 }
