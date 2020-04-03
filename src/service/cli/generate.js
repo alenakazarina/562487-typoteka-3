@@ -1,4 +1,5 @@
 'use strict';
+
 const chalk = require(`chalk`);
 const {getRandomInteger, shuffle, readData, writeData, getPath} = require(`../utils/utils`);
 const {DEFAULT_COUNT, MAX_INPUT_COUNT, Commands, DataPath, DataFiles} = require(`../const`);
@@ -16,6 +17,18 @@ const generateOffers = (categories, sentences, titles, count) => {
     "createdDate": shuffle(DATES)[getRandomInteger(0, DATES.length - 1)],
     "category": shuffle(categories).slice(0, [getRandomInteger(1, categories.length - 1)])
   }));
+};
+
+const createMockFile = async (path, content) => {
+  const writeFile = util.promisify(fs.writeFile);
+
+  try {
+    await writeFile(path, content);
+    console.info(chalk.green(`Operation success. File created: ${path}`));
+  } catch (error) {
+    console.error(chalk.red(`Can't write data to file...`));
+    process.exit(ExitCode.ERROR);
+  }
 };
 
 module.exports = {
