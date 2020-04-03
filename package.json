@@ -6,7 +6,10 @@
   "scripts": {
     "test": "npm run eslint",
     "eslint": "eslint --ext .js src/",
-    "start": "node ./src/service/service.js"
+    "start": "node ./src/service/service.js",
+    "start.help": "node ./src/service/service.js --help",
+    "start.version": "node ./src/service/service.js --version",
+    "start.generate": "node ./src/service/service.js --generate 5"
   },
   "repository": {
     "type": "git",
@@ -23,7 +26,6 @@
     "eslint-config-htmlacademy": "0.5.2"
   },
   "dependencies": {
-    "chalk": "3.0.0",
-    "inquirer": "7.0.5"
+    "chalk": "3.0.0"
   }
 }
