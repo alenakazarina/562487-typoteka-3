@@ -10,7 +10,8 @@
     "start.help": "node ./src/service/service.js --help",
     "start.version": "node ./src/service/service.js --version",
     "start.generate": "node ./src/service/service.js --generate 10",
-    "start.server": "nodemon ./src/service/service.js --server 3000"
+    "start.server": "nodemon ./src/service/service.js --server 3000",
+    "start-front-server": "nodemon ./src/express/index.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "nodemon": "2.0.2"
   },
   "dependencies": {
-    "chalk": "3.0.0"
+    "chalk": "3.0.0",
+    "express": "4.17.1"
   }
 }
