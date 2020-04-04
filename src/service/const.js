@@ -1,7 +1,10 @@
 'use strict';
 
-const DEFAULT_COUNT = 1;
-const MAX_INPUT_COUNT = 1000;
+const InputData = {
+  defaultCount: 1,
+  maxCount: 1000,
+  maxTextLength: 5
+};
 
 const Commands = {
   VERSION: `--version`,
@@ -22,8 +25,7 @@ const DataFiles = {
 };
 
 module.exports = {
-  DEFAULT_COUNT,
-  MAX_INPUT_COUNT,
+  InputData,
   Commands,
   DataPath,
   DataFiles

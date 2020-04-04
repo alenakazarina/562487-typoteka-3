@@ -1,42 +1,29 @@
 'use strict';
-
 const chalk = require(`chalk`);
-const {getRandomInteger, shuffle, readData, writeData, getPath} = require(`../utils/utils`);
-const {DEFAULT_COUNT, MAX_INPUT_COUNT, Commands, DataPath, DataFiles} = require(`../const`);
-const {ANNOUNCES_MAX_COUNT, DATES} = require(`../mock/mock`);
+const {readData, writeData, getPath} = require(`../utils/common`);
+const {getRandomInteger, shuffle, generateDates} = require(`../utils/generate`);
+const {InputData, Commands, DataPath, DataFiles} = require(`../const`);
 
 const generateOffers = (categories, sentences, titles, count) => {
-  const announce = shuffle(sentences).slice(0, getRandomInteger(1, ANNOUNCES_MAX_COUNT)).join(` `);
-
-  const sentencesWithoutAnnounce = sentences.filter((sentence) => announce.includes(sentence) === false);
+  const announceText = shuffle(sentences).slice(0, getRandomInteger(1, InputData.maxTextLength)).join(` `);
+  const sentencesWithoutAnnounce = sentences.filter((sentence) => announceText.includes(sentence) === false);
+  const dates = generateDates();
 
   return Array.from({length: count}, () => ({
-    "title": shuffle(titles)[getRandomInteger(0, titles.length - 1)],
-    "announce": announce,
-    "fullText": [announce, ...shuffle(sentencesWithoutAnnounce)].slice(0, getRandomInteger(1, sentences.length - 1)).join(` `),
-    "createdDate": shuffle(DATES)[getRandomInteger(0, DATES.length - 1)],
-    "category": shuffle(categories).slice(0, [getRandomInteger(1, categories.length - 1)])
+    title: shuffle(titles)[getRandomInteger(0, titles.length - 1)],
+    announce: announceText,
+    fullText: [announceText, ...shuffle(sentencesWithoutAnnounce)].slice(0, getRandomInteger(1, sentences.length - 1)).join(` `),
+    createdDate: shuffle(dates)[getRandomInteger(0, dates.length - 1)],
+    category: shuffle(categories).slice(0, [getRandomInteger(1, categories.length - 1)])
   }));
-};
-
-const createMockFile = async (path, content) => {
-  const writeFile = util.promisify(fs.writeFile);
-
-  try {
-    await writeFile(path, content);
-    console.info(chalk.green(`Operation success. File created: ${path}`));
-  } catch (error) {
-    console.error(chalk.red(`Can't write data to file...`));
-    process.exit(ExitCode.ERROR);
-  }
 };
 
 module.exports = {
   name: Commands.GENERATE,
   run: async (count) => {
-    const offersCount = Number.parseInt(count, 10) || DEFAULT_COUNT;
+    const offersCount = Number.parseInt(count, 10) || InputData.defaultCount;
 
-    if (count > MAX_INPUT_COUNT) {
+    if (count > InputData.maxCount) {
       console.error(chalk.red(`Не больше 1000 публикаций`));
       process.exit(1);
     }
