@@ -1,29 +1,30 @@
 'use strict';
 const chalk = require(`chalk`);
 const {readData, writeData, getPath} = require(`../utils/common`);
-const {getRandomInteger, shuffle, generateDates} = require(`../utils/generate`);
+const {getRandomItem, getRandomItems, getRandomText, getRandomDate} = require(`../utils/generate`);
 const {InputData, Commands, DataPath, DataFiles} = require(`../const`);
 
 const generateOffers = (categories, sentences, titles, count) => {
-  const announceText = shuffle(sentences).slice(0, getRandomInteger(1, InputData.maxTextLength)).join(` `);
-  const sentencesWithoutAnnounce = sentences.filter((sentence) => announceText.includes(sentence) === false);
-  const dates = generateDates();
-
-  return Array.from({length: count}, () => ({
-    title: shuffle(titles)[getRandomInteger(0, titles.length - 1)],
-    announce: announceText,
-    fullText: [announceText, ...shuffle(sentencesWithoutAnnounce)].slice(0, getRandomInteger(1, sentences.length - 1)).join(` `),
-    createdDate: shuffle(dates)[getRandomInteger(0, dates.length - 1)],
-    category: shuffle(categories).slice(0, [getRandomInteger(1, categories.length - 1)])
-  }));
+  return Array.from({length: count}, () => {
+    const announceText = getRandomText(sentences, InputData.MAX_TEXT_LENGTH);
+    const otherSentences = sentences.filter((sentence) => announceText.includes(sentence) === false);
+    const otherText = getRandomText(otherSentences, otherSentences.length - 1);
+    return {
+      title: getRandomItem(titles),
+      announce: announceText,
+      fullText: announceText.concat(otherText),
+      createdDate: getRandomDate(),
+      category: getRandomItems(categories)
+    };
+  });
 };
 
 module.exports = {
   name: Commands.GENERATE,
   run: async (count) => {
-    const offersCount = Number.parseInt(count, 10) || InputData.defaultCount;
+    const offersCount = Number.parseInt(count, 10) || InputData.DEFAULT_COUNT;
 
-    if (count > InputData.maxCount) {
+    if (count > InputData.MAX_COUNT) {
       console.error(chalk.red(`Не больше 1000 публикаций`));
       process.exit(1);
     }

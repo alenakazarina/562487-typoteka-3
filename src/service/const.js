@@ -1,9 +1,9 @@
 'use strict';
 const InputData = {
-  defaultCount: 1,
-  maxCount: 1000,
-  maxTextLength: 5,
-  defaultPort: 3000
+  DEFAULT_COUNT: 1,
+  MAX_COUNT: 1000,
+  MAX_TEXT_LENGTH: 5,
+  DEFAULT_PORT: 3000
 };
 
 const Commands = {
