@@ -1,9 +1,9 @@
 'use strict';
-
 const InputData = {
   defaultCount: 1,
   maxCount: 1000,
-  maxTextLength: 5
+  maxTextLength: 5,
+  defaultPort: 3000
 };
 
 const Commands = {
@@ -24,9 +24,18 @@ const DataFiles = {
   TITLES: `titles.txt`
 };
 
+const HttpCode = {
+  OK: 200,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500
+};
+
 module.exports = {
   InputData,
   Commands,
   DataPath,
-  DataFiles
+  DataFiles,
+  HttpCode
 };

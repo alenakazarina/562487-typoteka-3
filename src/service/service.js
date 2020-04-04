@@ -7,7 +7,7 @@ const run = async () => {
   if (!userCommand || !Cli[userCommand]) {
     return Cli[Commands.HELP].run();
   }
-  if (userCommand === Commands.GENERATE) {
+  if (userCommand === Commands.GENERATE || userCommand === Commands.SERVER) {
     return Cli[userCommand].run(count);
   }
   return Cli[userCommand].run();
