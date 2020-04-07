@@ -5,7 +5,7 @@ const articlesRouter = new Router();
 
 const ArticlesRoutes = {
   CATEGORY: `/category/:id`,
-  ADD: `/category/add`,
+  ADD: `/add`,
   EDIT: `/edit/:id`,
   ARTICLE: `/:id`
 };
