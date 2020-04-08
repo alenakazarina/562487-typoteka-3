@@ -1,5 +1,6 @@
 'use strict';
 const {Router} = require(`express`);
+const {arrayMock, PageContent} = require(`./data`);
 
 const Routes = {
   ROOT: `/`,
@@ -12,23 +13,60 @@ const Routes = {
 const commonRouter = new Router();
 
 commonRouter.get(Routes.ROOT, (req, res) => {
-  res.send(Routes.ROOT);
+  const rootPageContent = Object.assign({}, PageContent, {
+    page: `main`,
+    isAuth: false,
+    articles: arrayMock,
+    comments: arrayMock,
+    activeCategory: -1,
+    lastListItems: arrayMock,
+    hotListItems: arrayMock
+  });
+  res.render(`main`, rootPageContent);
 });
 
 commonRouter.get(Routes.REGISTER, (req, res) => {
-  res.send(Routes.REGISTER);
+  const registerPageContent = Object.assign({}, PageContent, {
+    page: `register`,
+    isAuth: false,
+    loginError: {
+      email: false,
+      password: false
+    },
+    errors: []
+  });
+  res.render(`login`, registerPageContent);
 });
 
 commonRouter.get(Routes.LOGIN, (req, res) => {
-  res.send(Routes.LOGIN);
+  const loginPageContent = Object.assign({}, PageContent, {
+    page: `login`,
+    isAuth: false,
+    loginError: {
+      email: false,
+      password: false
+    },
+    errors: []
+  });
+  res.render(`login`, loginPageContent);
 });
 
 commonRouter.get(Routes.SEARCH, (req, res) => {
-  res.send(Routes.SEARCH);
+  const searchPageContent = Object.assign({}, PageContent, {
+    page: `search`,
+    isAdmin: true,
+    searchResults: arrayMock,
+    keyWord: `Путешествия`
+  });
+  res.render(`search`, searchPageContent);
 });
 
 commonRouter.get(Routes.CATEGORIES, (req, res) => {
-  res.send(Routes.CATEGORIES);
+  const categoriesPageContent = Object.assign({}, PageContent, {
+    page: `categories`,
+    isAdmin: true
+  });
+  res.render(`admin-categories`, categoriesPageContent);
 });
 
 module.exports = {

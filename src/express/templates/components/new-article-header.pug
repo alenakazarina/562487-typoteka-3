@@ -1,0 +1,14 @@
+-
+  const formTitle = mode === `add` ? `Новая публикация` : `Редактировать`;
+  const todayDate = new Date().toISOString().slice(0, 10);
+  const date = mode === `add` ? `${todayDate}` : post.date;
+
+.new-publication__header
+  h1= formTitle
+  .new-publication__date-form
+    h3 Дата публикации
+    form(action='#' method='POST')
+      .new-publication__date-block
+        label(for='new-publication-date' aria-label='Календарь')
+        input#new-publication-date(type='text' name='login' placeholder= date)
+  button.new-publication__button.button.button--colored(type='submit') Опубликовать

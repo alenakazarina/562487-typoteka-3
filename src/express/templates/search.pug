@@ -1,0 +1,18 @@
+extends components/layout
+
+block content
+  main
+    section.search-page
+      if searchResults.length
+        .search-page__wrapper
+          h1 Поиск
+          .search.search-page__form(style=`margin-bottom: 0`)
+            include components/search-form
+          .search.search__results(style=`max-height: 360px; overflow-y: overlay`)
+            include components/search-result
+      else
+        .search-page__wrapper.search-page__wrapper--empty
+          h1 Поиск
+          .search.search-page__form
+            include components/search-form
+          p.search-page__empty Ничего не нашлось

@@ -40,13 +40,13 @@ if (popup) {
       let form = tabForms[i];
       tab.addEventListener('click', (evt) => {
         if (evt.target.classList.contains('popup__tab-switcher') && evt.currentTarget !== activeTab) {
-          activeTab.classList.remove('popup__tab--active');
-          tab.classList.add('popup__tab--active');
+          activeTab.classList.toggle('popup__tab--active');
+          tab.classList.toggle('popup__tab--active');
           activeTab = tab;
-          activeForm.classList.remove('popup__form--active');
-          activeForm.classList.add('popup__form--hidden');
-          form.classList.add('popup__form--active');
-          form.classList.remove('popup__form--hidden');
+          activeForm.classList.toggle('popup__form--active');
+          activeForm.classList.toggle('popup__form--hidden');
+          form.classList.toggle('popup__form--active');
+          form.classList.toggle('popup__form--hidden');
           activeForm = form;
         }
       });

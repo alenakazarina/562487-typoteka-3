@@ -1,0 +1,12 @@
+section.post__comments.comments
+  h2.comments__title.title.title--middle= `Комментарии ${comments.length ? `` : `отсутствуют`}`
+  include post-comments-list
+  div(class=`comments__footer comments__footer--${isAuth ? `user` : `visitor`}`)
+    if isAuth
+      include post-comments-form
+    else
+      button.comments__button.button.button--colored(type='submit') Войти
+      .comments__registration
+        p.text.text--signature
+          b.title.title--small Регистрация
+          | Чтобы присоединиться к переписке нужно зарегистрироваться

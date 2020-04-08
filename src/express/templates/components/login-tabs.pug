@@ -1,0 +1,7 @@
+ul.popup__tabs
+  li(class=`popup__tab popup__tab--register
+    ${page === `login` ? `` : `popup__tab--active`}`)
+    button.popup__tab-switcher.button(type='button') Регистрация
+  li(class=`popup__tab popup__tab--log-in
+    ${page === `login` ? `popup__tab--active` : ``}`)
+    button.popup__tab-switcher.button(type='button') Войти

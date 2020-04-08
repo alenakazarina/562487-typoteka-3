@@ -1,0 +1,16 @@
+extends components/layout
+
+block content
+  main
+    h1.visually-hidden Регистрация пользователя
+    section.modal
+      .popup.popup--registration
+        button.popup__button.button.button--popup-close(type='button' aria-label='Закрыть окно') Закрыть окно
+        h2.visually-hidden Форма регистрации
+        include components/login-tabs
+        include components/registration-form
+        include components/login-form
+      .modal__overlay
+
+block scripts
+  script(src='js/main.js')

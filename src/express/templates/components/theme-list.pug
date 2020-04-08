@@ -1,0 +1,30 @@
+-
+  const themes = [{
+    title: `Автомобили`,
+    count: 88
+  }, {
+    title: `Удаленная работа`,
+    count: 13
+  }, {
+    title: `Бизнес`,
+    count: 13
+  }, {
+    title: `Путешествия`,
+    count: 13
+  }, {
+    title: `Дизайн и обустройство`,
+    count: 13
+  }, {
+    title: `Производство игрушек`,
+    count: 22
+  }, {
+    title: `UX & UI`,
+    count: 22
+  }];
+
+ul.themes
+  each theme, i in themes
+    li.themes__item
+      a(href=`/articles/category/${i + 1}` class=`themes__item-link ${i === activeCategory ? `themes__item-link--active` : ``}`)= theme.title
+        sup= theme.count
+

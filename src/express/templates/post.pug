@@ -1,0 +1,23 @@
+extends components/layout
+
+block content
+  main
+    section.post
+      h1.visually-hidden Пост
+      section.post__content
+        h2.visually-hidden Основное содержание
+        .post__wrapper
+          .post__head
+            a.post__backwards.button.button--backwards(href='#') Назад
+            time.post__date(datetime='2019-03-21T20:33') 21.03.2019, 20:33
+            h2.post__title.title.title--main AirPods в один клик
+            include components/post-themes
+          if post.picture
+            .post__picture
+              img(src='img/sea-fullsize@1x.jpg' alt='пейзаж море, скалы, пляж')
+          include components/post-text
+      .post__wrapper.post__wrapper--comments
+        include components/post-comments
+
+block scripts
+  script(src='js/main.js')

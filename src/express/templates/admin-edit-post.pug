@@ -1,0 +1,15 @@
+extends components/layout
+
+block content
+  main
+    section.modal.modal--flex
+      .popup.popup--new-publication.popup--flex
+        .new-publication
+          include components/new-article-header
+          button.popup__button.button.button--popup-close(type='button' aria-label='Закрыть окно') Закрыть окно
+          include components/new-article-form
+      .modal__overlay
+
+block scripts
+  script(src='js/vendor.js')
+  script(src='js/main.js')

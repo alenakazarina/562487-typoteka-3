@@ -1,0 +1,12 @@
+section.main-page__hot.hot
+  h2.hot__name= `Самое обсуждаемое `
+    span.hot__icon.hot__icon--fire
+  if hotListItems.length
+    ul.hot__list
+      each hotItem in [1, 2, 3, 4]
+        li.hot__list-item
+          a.hot__list-link(href='#')
+            | Билл Гейтс впервые за два года возглавил рейтинг самых богатых людей мира по версии Bloomberg
+            sup.hot__link-sup 12
+  else
+    p.last__empty Здесь пока ничего нет...

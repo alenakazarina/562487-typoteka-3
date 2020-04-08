@@ -1,0 +1,27 @@
+div(class=`popup__form form form--register
+    ${page === `register` ? `popup__form--active` : `popup__form--hidden`}`)
+  form(action='#' method='get')
+    .form__field
+      label
+        input(type='email' placeholder='Электронная почта' required)
+    .form__field
+      label
+        input(type='text' placeholder='Имя' required)
+    .form__field
+      label
+        input(type='text' placeholder='Фамилия')
+    .form__field
+      label
+        input(type='password' placeholder='Пароль' required)
+    .form__field
+      label
+        input(type='password' placeholder='Повтор пароля' required)
+    if errors.length
+      include validation-error
+    .form__image-loader
+      a.form__avatar.avatar
+        img(src='img/icons/smile.svg' alt='аватар пользователя')
+      label
+        input.visually-hidden(type='file')
+        | Загрузить фото профиля
+    button.form__submit-btn.form__submit-btn--register.button.button--colored(type='submit') Зарегистрироваться

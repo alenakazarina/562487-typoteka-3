@@ -1,0 +1,15 @@
+- const errorClass = page === `404` || page === `500` ? `header--error` : ``;
+
+header(class=`header ${errorClass}`)
+  include logo
+  if isAdmin
+    button.button.button--colored.header__button-new Новая запись
+    include header-dropdown
+  else if isAuth
+    include header-nav
+    a.header__avatar.avatar
+      img(src='img/avatar-2.png' alt='аватар пользователя')
+    </a>
+  else
+    include header-nav
+  a.header__search.button.button--search(href='/search' aria-label='поиск по сайту')

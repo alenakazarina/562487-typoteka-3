@@ -1,0 +1,22 @@
+extends components/layout
+
+block content
+  main.main-page
+    h1.visually-hidden Главная страница личного блога Типотека
+    p Это приветственный текст, который владелец блога может выбрать, чтобы описать себя 👏
+    if articles.length
+      section.main-page__theme-list
+        h2.visually-hidden Список тем
+        include components/theme-list.pug
+      .main-page__section-flex
+        include components/hot-list
+        include components/last-list
+      section.main-page__list.preview
+        h2.visually-hidden Список превью статей
+        include components/preview-list
+    else
+      .main-page__empty-wrapper
+        p.main-page__empty-text Здесь пока пусто!
+
+block scripts
+  script(src='js/main.js')

@@ -1,0 +1,14 @@
+-
+  const bodyStyle = page === `add-post` ? `height: 1050px;` : ``;
+  const wrapperClass = page === `search` || page === `404` || page === `500` ? `wrapper-color` : `wrapper`;
+  const noBackgroundClass = page === `categories` || page === `my-publications` || page === `my-comments` ? `wrapper--nobackground` : ``;
+
+doctype html
+html(lang='ru')
+  include head
+  body(style= bodyStyle)
+    div(class=`${wrapperClass} ${noBackgroundClass}`)
+      include header
+      block content
+      include footer
+    block scripts

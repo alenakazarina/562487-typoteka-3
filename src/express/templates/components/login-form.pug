@@ -1,0 +1,14 @@
+div(class=`popup__form form form--log-in
+  ${page === `login` ? `popup__form--active` : `popup__form--hidden`}`)
+  form(action='#' method='get')
+    .form__field
+      label
+        input(type='email' placeholder='Электронная почта' required)
+    if loginError.email
+      p.form__error-message Ошибка ввода email
+    .form__field
+      label
+        input(type='password' placeholder='Пароль' required)
+    if loginError.password
+      p.form__error-message Ошибка ввода пароля
+    button.form__submit-btn.form__submit-btn--log-in.button.button--colored(type='submit') Войти
