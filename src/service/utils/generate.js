@@ -45,5 +45,6 @@ module.exports = {
   getRandomItem,
   getRandomItems,
   getRandomText,
-  getRandomDate
+  getRandomDate,
+  getRandomInteger
 };
