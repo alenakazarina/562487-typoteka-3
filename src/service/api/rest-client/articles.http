@@ -1,0 +1,39 @@
+### get articles
+GET http://localhost:3000/api/articles HTTP/1.1
+
+### get article success
+GET http://localhost:3000/api/articles/iobOtG HTTP/1.1
+
+### update article success
+PUT http://localhost:3000/api/articles/iobOtG HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Как преодолеть творческий кризис."
+}
+
+### get search success
+GET http://localhost:3000/api/search?query=работа HTTP/1.1
+
+### get search empty
+GET http://localhost:3000/api/search?query=процесс HTTP/1.1
+
+### get article 404
+GET http://localhost:3000/api/articles/iobOtF HTTP/1.1
+
+### update article 404
+PUT http://localhost:3000/api/articles/iobOtP HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Как преодолеть творческий кризис."
+}
+
+### update article failed
+PUT http://localhost:3000/api/articles/iobOtG HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Как преодолеть творческий кризис."
+}
+

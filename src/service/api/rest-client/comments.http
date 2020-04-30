@@ -1,0 +1,34 @@
+### get articles
+GET http://localhost:3000/api/articles HTTP/1.1
+
+### post comment success
+POST http://localhost:3000/api/articles/iobOtG/comments/ HTTP/1.1
+content-type: application/json
+
+{
+  "text": "Почему так дешёво? Оно в ужасном состоянии?"
+}
+
+### get comments success
+GET http://localhost:3000/api/articles/iobOtG/comments HTTP/1.1
+
+### delete comment success
+DELETE http://localhost:3000/api/articles/iobOtG/comments/rsLHYv HTTP/1.1
+
+### get comments failed - article not found
+GET http://localhost:3000/api/articles/PPXHG6/comments HTTP/1.1
+
+### post comment failed - missed comment field
+POST http://localhost:3000/api/articles/3JZT73/comments/ HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Почему так дешёво?"
+}
+
+### delete comment 404
+DELETE http://localhost:3000/api/articles/PPXHG6/comments/btgDvK HTTP/1.1
+
+### delete comment 404
+DELETE http://localhost:3000/api/articles/PPXHG6/comments/btgDvK HTTP/1.1
+
