@@ -1,11 +1,10 @@
 'use strict';
-const {readArticles, readCategories} = require(`./helpers`);
 const {Article, Comment} = require(`./models`);
 
 class Store {
-  constructor() {
-    this._articles = [];
-    this._categories = [];
+  constructor(articles, categories) {
+    this._articles = articles;
+    this._categories = categories;
   }
 
   get articles() {
@@ -14,15 +13,6 @@ class Store {
 
   get categories() {
     return this._categories;
-  }
-
-  async init() {
-    try {
-      this._articles = await readArticles();
-      this._categories = await readCategories();
-    } catch (err) {
-      console.error(err);
-    }
   }
 
   async getArticles() {
@@ -100,7 +90,7 @@ class Store {
       return null;
     }
 
-    const comment = article.comments.splice(index, 1);
+    const comment = article.comments.splice(index, 1)[0];
     return comment;
   }
 

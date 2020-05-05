@@ -1,6 +1,6 @@
 'use strict';
 const fs = require(`fs`).promises;
-const {getPath} = require(`../utils/common`);
+const {getPath} = require(`./common`);
 const {DataPath, DataFiles} = require(`../const`);
 
 const readArticles = async () => {

@@ -11,10 +11,10 @@ content-type: application/json
 }
 
 ### check new article
-GET http://localhost:3000/api/articles/PXzYNq HTTP/1.1
+GET http://localhost:3000/api/articles/FA2bLW HTTP/1.1
 
 ### delete article
-DELETE http://localhost:3000/api/articles/PXzYNq HTTP/1.1
+DELETE http://localhost:3000/api/articles/FA2bLW HTTP/1.1
 
 ### post article failed - missed offer ticket-name field
 POST http://localhost:3000/api/articles/ HTTP/1.1

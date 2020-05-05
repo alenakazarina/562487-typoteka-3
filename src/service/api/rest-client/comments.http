@@ -13,7 +13,7 @@ content-type: application/json
 GET http://localhost:3000/api/articles/iobOtG/comments HTTP/1.1
 
 ### delete comment success
-DELETE http://localhost:3000/api/articles/iobOtG/comments/rsLHYv HTTP/1.1
+DELETE http://localhost:3000/api/articles/iobOtG/comments/A4ngxK HTTP/1.1
 
 ### get comments failed - article not found
 GET http://localhost:3000/api/articles/PPXHG6/comments HTTP/1.1
@@ -27,7 +27,7 @@ content-type: application/json
 }
 
 ### delete comment 404
-DELETE http://localhost:3000/api/articles/PPXHG6/comments/btgDvK HTTP/1.1
+DELETE http://localhost:3000/api/articles/iobOtF/comments/A4ngxL HTTP/1.1
 
 ### delete comment 404
 DELETE http://localhost:3000/api/articles/PPXHG6/comments/btgDvK HTTP/1.1
